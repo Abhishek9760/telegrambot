@@ -7,6 +7,10 @@ module.exports = (bot) => {
         return fs.existsSync(`./src/database/dicts/${chatId}.json`);
     }
 
+    function dirExists() {
+        return fs.existsSync("./src/database/dicts");
+    }
+
     function createFile (chatId) {
         if(!(fileExists(chatId))){
             fs.writeFileSync(`./src/database/dicts/${chatId}.json`, '{"data": {}}');
@@ -86,6 +90,9 @@ Examples: <i>${d["examples"]}</i>
         let input = ctx.message.text.toLowerCase();
         let inputArray = input.split(' ');
         let chatId = ctx.update.message.from.id;
+        if(!dirExists()){
+            fs.mkdirSync("./src/database/dicts");
+        }
 
         if(inputArray.length === 1) {
             let data = parseData(chatId);
