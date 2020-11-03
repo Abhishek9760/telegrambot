@@ -1,30 +1,47 @@
 let helpMsg = 
 `
-<b>Welcome to our bot</b>
+*Welcome to our bot*
 🎶🎇🎉🎊🎈
 
 Here are some things this bot can do
 
-/dice - <i>Sends a dice</i> 🎲
-/jokeoftheday - <i>Get joke of the day</i>
-/cnj - <i>Get a random Chuck Norris Joke</i>
-/joke - <i>Get any random joke</i>
-/riddle - <i>Get a random riddle</i>
-/story - <i>Get a story</i>
-/joke - <i>Get any random joke</i>
-/advice - <i>Get an advice</i>
-/f (number) - <i>Get a fact on any number</i>
-/ask (any) - <i>Get any answer</i>
-/dogbreeds - <i>Get a list of all dog breeds</i>
-/dog (breed) - <i>Get a random image of dog breed</i>
-/cat - <i>Get a random image of cat</i>
-/cat (name) - <i>Get your name caption on cat picture</i>
+(DICE)
+*/dice* - _Sends a dice_ 🎲
+
+(JOKES)
+*/jokeoftheday* - _Get joke of the day_
+*/cnj* - _Get a random Chuck Norris Joke_
+*/joke* - _Get any random joke_
+*/joke* - _Get any random joke_
+
+(FUN)
+*/riddle* - _Get a random riddle_
+*/story* - _Get a story_
+*/advice* - _Get an advice_
+
+(FACTS)
+*/f (number)* - _Get a fact on any number_
+*/ask (any)* - _Get any answer_
+
+(IMAGE)
+*/dogbreeds* - _Get a list of all dog breeds_
+*/dog (breed)* - _Get a random image of dog breed_
+*/cat* - _Get a random image of cat_
+*/cat (name)* - _Get your name caption on cat picture_
+
+(DICTIONARY)
+*/dict* - _Get list of all your words._
+*/dict make* - _Setup a database._
+*/dict add <word>* - _Add a word to your database dictionary._
+*/dict get <word>* - _Get more info about specific word present in database._
+*/dict delete <word>* - _Delete a specific word from database dictionary._
+*/dict delete* - _Delete whole database._
 
 
-<b>Use Inline Mode</b>
-@cutioBot s (any)  optional(int results) - <i>Search for any song</i>
-@cutioBot p (any) - <i>Search for any Image</i>
-@cutioBot w (any) - <i>Search for anything on wikipedia</i>
+*Use Inline Mode*
+*@cutioBot s (any)  optional(int results)* - _Search for any song_
+*@cutioBot p (any) optional(int results)* - _Search for any Image_
+*@cutioBot w (any)* - _Search for anything on wikipedia_
 `;
   
 dogbreeds = [

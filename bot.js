@@ -22,6 +22,9 @@ lyricsCommand(bot);
 const wikiCommand = require('./src/commands/inlineHandlers/wiki');
 wikiCommand(bot);
 
+const dictCommand = require('./src/commands/dict');
+dictCommand(bot);
+
 const pixabayCommand = require('./src/commands/inlineHandlers/pixabayimages');
 pixabayCommand(bot);
 

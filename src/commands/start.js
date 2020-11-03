@@ -6,7 +6,7 @@ module.exports = (bot) => {
     
     bot.command(["start", "help"], ctx => {
         ctx.reply(helpMsg, {
-            parse_mode: "HTML",
+            parse_mode: "Markdown",
             reply_markup: {
                 inline_keyboard: [
                     [
@@ -20,6 +20,8 @@ module.exports = (bot) => {
                     ],
                 ]
             }
+        }).catch(err => {
+            console.log(err);
         });
     })
     
