@@ -79,7 +79,7 @@ module.exports = (bot) => {
         }
       } else if (cmd === "delete" && inputArray.length === 3) {
         return wordapi
-          .deleteWordFromChatID(chatId, wordapi)
+          .deleteWordFromChatID(chatId, word)
           .then((data) => {
             console.log(data);
           })
