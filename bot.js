@@ -2,7 +2,17 @@ require('dotenv').config();
 
 const Telegraf = require('telegraf');
 
+const rateLimit = require('telegraf-ratelimit')
+
+// Set limit to 1 message per 3 seconds
+const limitConfig = {
+  window: 2000,
+  limit: 1,
+  onLimitExceeded: (ctx, next) => ctx.reply('Rate limit exceeded')
+}
+
 const bot = new Telegraf(process.env.TOKEN)
+bot.use(rateLimit(limitConfig))
 
 const askCommand = require('./src/commands/ask');
 askCommand(bot);
@@ -70,4 +80,4 @@ gnCommand(bot);
 const babyCommand = require('./src/commands/private/baby');
 babyCommand(bot);
 
-bot.launch()
+bot.startPolling()

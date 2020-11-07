@@ -5,6 +5,7 @@ module.exports = (bot) => {
     let helpMsg = config.helpMsg;
     
     bot.command(["start", "help"], ctx => {
+        console.log(ctx.update.message)
         ctx.reply(helpMsg, {
             parse_mode: "Markdown",
             reply_markup: {
