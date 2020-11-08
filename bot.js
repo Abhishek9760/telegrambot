@@ -4,10 +4,10 @@ const Telegraf = require('telegraf');
 
 const rateLimit = require('telegraf-ratelimit')
 
-// Set limit to 1 message per 3 seconds
+// Set limit to 1 message per 2 seconds
 const limitConfig = {
-  window: 2000,
-  limit: 1,
+  window: 1,
+  limit: 15,
   onLimitExceeded: (ctx, next) => ctx.reply('Rate limit exceeded')
 }
 

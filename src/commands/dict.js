@@ -13,12 +13,12 @@ module.exports = (bot) => {
             }
             let msg = `
 <b>${word}</b>
-----------------------------------------------------
+--------------------------------------------------
 <b>Definition</b>: ${data.definition || "Not Found"}
 
 <b>Synonyms</b>: ${data.synonyms || "Not Found"}
 
-<b>Type Of</b>: ${data.typeOf || "Not Found"}
+<b>Type Of</b>: ${data.type_of || "Not Found"}
 
 <b>Examples</b>: ${data.examples || "Not Found"}
 `;
@@ -40,7 +40,13 @@ module.exports = (bot) => {
       return wordapi
         .getWordByChatID(chatId)
         .then((data) => {
+          if (data && data.isAxiosError) {
+            return ctx.reply("Please make a database first by \n*/dict make* ",{
+              parse_mode: "MARKDOWN",
+            });
+          }
           if (data) {
+            // console.log(typeof(data));
             let msg = ``;
             for (let item of data) {
               msg += item.word + "\n";

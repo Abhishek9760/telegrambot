@@ -23,7 +23,7 @@ function getSpecificWordByChatID(chatid, word) {
 
 function createChatIDDatabase(chatid) {
     return axios.post(ChatIDUrl, data={'chat_id': chatid}).then(res => {
-        console.log(res);
+        return res.data;
     }).catch(err => {
         return err;
     })
