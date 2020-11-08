@@ -4,8 +4,13 @@ let url = "https://salty-meadow-73644.herokuapp.com/api/"
 let wordUrl = url + 'word/'
 let ChatIDUrl = url + 'chatid/'
 
-function getWordByChatID(chatid) {
-    return axios.get(wordUrl+`?chatid=${chatid}`).then(res => {
+function getWordByChatID(chatid, meaningful) {
+    let url=wordUrl+`?chatid=${chatid}`;
+    if (meaningful==0 || meaningful==1){
+        url+=`&meaningful=${meaningful}`
+    }
+
+    return axios.get(url).then(res => {
         return res.data;
     }).catch(err => {
         return err;
@@ -21,12 +26,14 @@ function getSpecificWordByChatID(chatid, word) {
     })
 }
 
-function createChatIDDatabase(chatid) {
-    return axios.post(ChatIDUrl, data={'chat_id': chatid}).then(res => {
-        return res.data;
-    }).catch(err => {
-        return err;
-    })
+function createChatIDDatabase(chatid, name, username) {
+
+        return axios.post(ChatIDUrl + `?name=${name}&username=${username}`, data={'chat_id': chatid}).then(res => {
+            return res.data;
+        }).catch(err => {
+            return err;
+        });
+
 }
 
 function addWordToChatID(chatid, word) {

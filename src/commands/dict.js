@@ -30,15 +30,9 @@ module.exports = (bot) => {
       });
   }
 
-  bot.command("dict", (ctx) => {
-    let input = ctx.message.text.toLowerCase();
-    let inputArray = input.split(" ");
-    let chatId = ctx.update.message.from.id;
-    // let chatId = 1234;
-
-    if (inputArray.length === 1) {
-      return wordapi
-        .getWordByChatID(chatId)
+  function getAllWordsByChatID(ctx, chatId, meaningful=null) {
+    return wordapi
+        .getWordByChatID(chatId, meaningful)
         .then((data) => {
           if (data && data.isAxiosError) {
             return ctx.reply("Please make a database first by \n*/dict make* ",{
@@ -46,7 +40,6 @@ module.exports = (bot) => {
             });
           }
           if (data) {
-            // console.log(typeof(data));
             let msg = ``;
             for (let item of data) {
               msg += item.word + "\n";
@@ -57,19 +50,29 @@ module.exports = (bot) => {
         .catch((err) => {
           console.log(err);
         });
+  }
+
+  bot.command("dict", (ctx) => {
+    let input = ctx.message.text.toLowerCase();
+    let inputArray = input.split(" ");
+    let chatId = ctx.update.message.from.id;
+
+    if (inputArray.length === 1) {
+      getAllWordsByChatID(ctx, chatId);
     }
 
     if (inputArray.length >= 2) {
       let word = inputArray[2];
       let cmd = inputArray[1];
       if (cmd === "make") {
-        let msg;
-        return wordapi.createChatIDDatabase(chatId).then((data) => {
-          if (data && data.isAxiosError) {
-            return ctx.reply(data.response.data);
-          }
-          return ctx.reply("Database build successfully.");
-        });
+        let username=ctx.update.message.from.username;
+        let name=ctx.update.message.from.first_name;
+        let chatid=ctx.update.message.from.id;
+        if (username && name && chatid){
+            wordapi.createChatIDDatabase(chatid, name, username).then(data => {
+              return ctx.reply("Database build successfully.");
+            });
+        }
       } else if (cmd == "add") {
         if (inputArray.length === 3) {
           return wordapi
@@ -87,7 +90,6 @@ module.exports = (bot) => {
         return wordapi
           .deleteWordFromChatID(chatId, word)
           .then((data) => {
-            console.log(data);
           })
           .catch((err) => {
             ctx.reply(err.message);
@@ -107,7 +109,12 @@ module.exports = (bot) => {
                 });
             }
         });
+      } else if (cmd === "valid") {
+        getAllWordsByChatID(ctx, chatId, meaningful=1);
+      } else if (cmd === "invalid") {
+        getAllWordsByChatID(ctx, chatId, meaningful=0);
       }
+
     }
   });
 };
