@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-let url = "https://salty-meadow-73644.herokuapp.com/api/"
+let url = "http://abhi101.pythonanywhere.com/api/"
 let wordUrl = url + 'word/'
 let ChatIDUrl = url + 'chatid/'
 
