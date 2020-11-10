@@ -34,6 +34,8 @@ Here are some things this bot can do
 */dict make* - _Setup a database._
 */dict add <word>* - _Add a word to your database dictionary._
 */dict get <word>* - _Get more info about specific word present in database._
+*/dict valid* - _Get meaningful words._
+*/dict invalid* - _Get not meaningful words._
 */dict delete <word>* - _Delete a specific word from database dictionary._
 */dict delete* - _Delete whole database._
 
