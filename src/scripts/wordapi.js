@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-let url = "http://abhi101.pythonanywhere.com/api/"
+let url = "https://abhi101.pythonanywhere.com/api/"
 let wordUrl = url + 'word/'
 let ChatIDUrl = url + 'chatid/'
 
