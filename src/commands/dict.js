@@ -12,15 +12,12 @@ module.exports = (bot) => {
                 return data.response.data;
             }
             let msg = `
-<b>${word}</b>
+*${word}*
 --------------------------------------------------
-<b>Definition</b>: ${data.definition || "Not Found"}
 
-<b>Synonyms</b>: ${data.synonyms || "Not Found"}
+*Definition*: ${data.definition || "Not Found"}
 
-<b>Type Of</b>: ${data.type_of || "Not Found"}
-
-<b>Examples</b>: ${data.examples || "Not Found"}
+*Examples*: ${data.examples || "Not Found"}
 `;
           return msg;
           }
@@ -103,9 +100,9 @@ module.exports = (bot) => {
         });
       } else if (cmd === "get") {
         return getSpecificWord(chatId, word).then(data => {
-            if (data){
+            if (data && !data.isAxiosError){
                 return ctx.reply(data, {
-                    parse_mode: "HTML",
+                    parse_mode: "MARKDOWN",
                 });
             }
         });
