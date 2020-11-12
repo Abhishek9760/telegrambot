@@ -92,6 +92,5 @@ dogbreeds = [
 
 
 module.exports = {
-    helpMsg,
     dogbreeds,
 }
