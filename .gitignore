@@ -1,2 +1,5 @@
 .env
 bot.*
+node_modules
+LICENSE
+README.md

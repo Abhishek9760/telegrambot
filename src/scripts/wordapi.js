@@ -33,7 +33,6 @@ function createChatIDDatabase(chatid, name, username) {
         }).catch(err => {
             return err;
         });
-
 }
 
 function addWordToChatID(chatid, word) {
