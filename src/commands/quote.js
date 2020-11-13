@@ -1,0 +1,22 @@
+const axios = require('axios');
+
+module.exports = (bot => {
+    bot.command("quote", f = (ctx) => {
+        axios.get("https://abhi101.pythonanywhere.com/api/quotes").then(res => {
+            let data = res.data;
+            if (data && data.text && data.author) {
+                let msg = 
+`
+${data.text}
+
+By - <a href='${data.img}'>${data.author}</a>
+`
+                ctx.reply(msg, {
+                    parse_mode: "HTML"
+                })
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    });
+})

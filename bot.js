@@ -44,6 +44,9 @@ startCommand(bot);
 const adviceCommand = require('./src/commands/advice');
 adviceCommand(bot);
 
+const quoteCommand = require('./src/commands/quote');
+quoteCommand(bot);
+
 const dogbreedsCommand = require('./src/commands/dogbreeds');
 dogbreedsCommand(bot);
 
