@@ -33,7 +33,8 @@ Below are some of my features you can use.\
                         ],
                         [
                             {text: "Facts", callback_data: "facts"},
-                            {text: "Dictionary", callback_data: "dict"}
+                            {text: "Dictionary", callback_data: "dict"},
+                            {text: "Quotes", callback_data: "quote"}
                         ],
                         [
                             {text: "Inline Modes", callback_data: "inline"}
@@ -53,7 +54,7 @@ Below are some of my features you can use.\
         sendStartMsg(ctx);
     });
 
-    let actions = ['send_dice', 'jokes', 'mystery', 'advice', 'facts', 'dict', 'inline'];
+    let actions = ['send_dice', 'jokes', 'mystery', 'advice', 'facts', 'dict', 'inline', 'quote'];
     bot.action(actions, ctx=>{
         let cmd = ctx.match;
         let msg;
@@ -118,6 +119,12 @@ Below are some of my features you can use.\
 *@cutioBot p (any) optional(int results)* - _Search for any Image_
 *@cutioBot w (any)* - _Search for anything on wikipedia_
 `;
+        }else if(cmd == "quote"){
+            msg = 
+`
+(QUOTE)
+*/quote* - _Get awesome quotes_
+`
         }
         ctx.deleteMessage();
         bot.telegram.sendMessage(ctx.chat.id, msg, {
