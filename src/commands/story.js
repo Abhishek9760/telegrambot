@@ -1,20 +1,22 @@
-let fs = require('fs');
+let axios = require("axios");
 
-module.exports = (bot) => 
-{
-    bot.command('story', ctx => {
-        let obj = JSON.parse(fs.readFileSync('./src/database/stories.json', 'utf8'));
-        let item = obj[Math.floor(Math.random() * obj.length)];
-        let msg = 
-`
-<b>${item.Heading}</b>
+module.exports = (bot) => {
+  bot.command("story", async (ctx) => {
+    return await axios
+      .get("https://abhi101.pythonanywhere.com/api/stories")
+      .then((res) => {
+        let data = res.data;
+        if (data) {
+          let msg = `
+<b>${data.heading}</b>
 
-${item.Story}
+${data.story}
 `;
-        ctx.reply(msg, {
+          ctx.reply(msg, {
             parse_mode: "HTML",
-        });
-        }, f = (err) => {
-        ctx.reply("An Error is occured in getting story.");
-    });
-}
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  });
+};
