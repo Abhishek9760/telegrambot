@@ -2,18 +2,18 @@ require("dotenv").config();
 
 const Telegraf = require("telegraf");
 const session = require("telegraf/session");
-// const rateLimit = require('telegraf-ratelimit')
+const rateLimit = require("telegraf-ratelimit");
 
 // Set limit to 1 message per 2 seconds
-// const limitConfig = {
-//   window: 1,
-//   limit: 15,
-//   onLimitExceeded: (ctx, next) => ctx.reply('Rate limit exceeded')
-// }
+const limitConfig = {
+  window: 1000,
+  limit: 20,
+  onLimitExceeded: (ctx, next) => ctx.reply("Rate limit exceeded"),
+};
 
 const bot = new Telegraf(process.env.TOKEN);
 bot.use(session());
-// bot.use(rateLimit(limitConfig))
+bot.use(rateLimit(limitConfig));
 
 const cron = require("node-cron");
 
