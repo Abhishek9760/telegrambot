@@ -14,7 +14,11 @@ async function scheduler(bot) {
 }
 
 function counter(bot) {
-  bot.command("count", (ctx) => {
+  bot.command("count", async (ctx) => {
+    const data = await ctx.getChat();
+    if (data.id != -494732805) {
+      return;
+    }
     let input = ctx.message.text.toLowerCase();
     let inputArray = input.split(" ");
     if (inputArray.length === 2 && inputArray[1] == "r") {
