@@ -7,8 +7,10 @@ const rateLimit = require("telegraf-ratelimit");
 // Set limit to 1 message per 2 seconds
 const limitConfig = {
   window: 1000,
-  limit: 20,
-  onLimitExceeded: (ctx, next) => ctx.reply("Rate limit exceeded"),
+  limit: 5,
+  onLimitExceeded: (ctx) => {
+    ctx.reply("Do not spam you brat!");
+  },
 };
 
 const bot = new Telegraf(process.env.TOKEN);
