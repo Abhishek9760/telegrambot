@@ -55,6 +55,9 @@ startCommand(bot);
 const adviceCommand = require("./src/commands/advice");
 adviceCommand(bot);
 
+const aboutCommand = require("./src/commands/about");
+aboutCommand(bot);
+
 const quoteCommand = require("./src/commands/quote");
 quoteCommand(bot);
 

@@ -15,8 +15,7 @@ module.exports = (bot) => {
     let startMessage =
       "\
 Hey! My name is ```Sara```. I am a bot which can do various actions to help you not getting bored.😉\n\
-Below are some of my features you can use.\
-";
+\nBelow are some of my features you can use.\n\nWant to know more try: /about";
     bot.telegram.sendMessage(ctx.chat.id, startMessage, {
       reply_markup: {
         inline_keyboard: [
@@ -27,7 +26,6 @@ Below are some of my features you can use.\
           [
             { text: "Mystery", callback_data: "mystery" },
             { text: "Advice", callback_data: "advice" },
-            { text: "About", callback_data: "about" },
           ],
           [
             { text: "Facts", callback_data: "facts" },
@@ -59,7 +57,6 @@ Below are some of my features you can use.\
     "dict",
     "inline",
     "quote",
-    "about",
   ];
   bot.action(actions, (ctx) => {
     let cmd = ctx.match;
@@ -122,12 +119,6 @@ Below are some of my features you can use.\
       msg = `
 (QUOTE)
 */quote* - _Get awesome quotes_
-`;
-    } else if (cmd === "about") {
-      msg = `
-I am developed by
-@abhiVerma200 and still under
-development.
 `;
     }
     ctx.deleteMessage();
