@@ -14,7 +14,7 @@ async function scheduler(bot) {
 }
 
 function counter(bot) {
-  bot.command("count", async (ctx) => {
+  bot.command(["count", "count@cutio_bot"], async (ctx) => {
     const data = await ctx.getChat();
     if (data.id != -494732805) {
       return;

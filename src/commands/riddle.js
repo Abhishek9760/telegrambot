@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 module.exports = (bot) => {
-  bot.command("riddle", async (ctx) => {
+  bot.command(["riddle", "riddle@cutio_bot"], async (ctx) => {
     return await axios
       .get("https://abhi101.pythonanywhere.com/api/riddles")
       .then(async (res) => {

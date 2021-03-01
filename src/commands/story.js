@@ -1,7 +1,7 @@
 let axios = require("axios");
 
 module.exports = (bot) => {
-  bot.command("story", async (ctx) => {
+  bot.command(["story", "story@cutio_bot"], async (ctx) => {
     return await axios
       .get("https://abhi101.pythonanywhere.com/api/stories")
       .then((res) => {

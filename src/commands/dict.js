@@ -7,11 +7,11 @@ module.exports = (bot) => {
     return wordapi
       .getSpecificWordByChatID(chatId, word)
       .then((data) => {
-          if (data) {
-            if (data.isAxiosError){
-                return data.response.data;
-            }
-            let msg = `
+        if (data) {
+          if (data.isAxiosError) {
+            return data.response.data;
+          }
+          let msg = `
 *${word}*
 --------------------------------------------------
 
@@ -20,36 +20,36 @@ module.exports = (bot) => {
 *Examples*: ${data.examples || "Not Found"}
 `;
           return msg;
-          }
+        }
       })
       .catch((err) => {
         return err.message;
       });
   }
 
-  function getAllWordsByChatID(ctx, chatId, meaningful=null) {
+  function getAllWordsByChatID(ctx, chatId, meaningful = null) {
     return wordapi
-        .getWordByChatID(chatId, meaningful)
-        .then((data) => {
-          if (data && data.isAxiosError) {
-            return ctx.reply("Please make a database first by \n*/dict make* ",{
-              parse_mode: "MARKDOWN",
-            });
+      .getWordByChatID(chatId, meaningful)
+      .then((data) => {
+        if (data && data.isAxiosError) {
+          return ctx.reply("Please make a database first by \n*/dict make* ", {
+            parse_mode: "MARKDOWN",
+          });
+        }
+        if (data) {
+          let msg = ``;
+          for (let item of data) {
+            msg += item.word + "\n";
           }
-          if (data) {
-            let msg = ``;
-            for (let item of data) {
-              msg += item.word + "\n";
-            }
-            return ctx.reply(msg);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          return ctx.reply(msg);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  bot.command("dict", (ctx) => {
+  bot.command(["dict", "dict@cutio_bot"], (ctx) => {
     let input = ctx.message.text.toLowerCase();
     let inputArray = input.split(" ");
     let chatId = ctx.update.message.from.id;
@@ -62,13 +62,13 @@ module.exports = (bot) => {
       let word = inputArray[2];
       let cmd = inputArray[1];
       if (cmd === "make") {
-        let username=ctx.update.message.from.username;
-        let name=ctx.update.message.from.first_name;
-        let chatid=ctx.update.message.from.id;
-        if (username && name && chatid){
-            wordapi.createChatIDDatabase(chatid, name, username).then(data => {
-              return ctx.reply("Database build successfully.");
-            });
+        let username = ctx.update.message.from.username;
+        let name = ctx.update.message.from.first_name;
+        let chatid = ctx.update.message.from.id;
+        if (username && name && chatid) {
+          wordapi.createChatIDDatabase(chatid, name, username).then((data) => {
+            return ctx.reply("Database build successfully.");
+          });
         }
       } else if (cmd == "add") {
         if (inputArray.length === 3) {
@@ -86,8 +86,7 @@ module.exports = (bot) => {
       } else if (cmd === "delete" && inputArray.length === 3) {
         return wordapi
           .deleteWordFromChatID(chatId, word)
-          .then((data) => {
-          })
+          .then((data) => {})
           .catch((err) => {
             ctx.reply(err.message);
           });
@@ -99,19 +98,18 @@ module.exports = (bot) => {
           return ctx.reply("Database already deleted");
         });
       } else if (cmd === "get") {
-        return getSpecificWord(chatId, word).then(data => {
-            if (data && !data.isAxiosError){
-                return ctx.reply(data, {
-                    parse_mode: "MARKDOWN",
-                });
-            }
+        return getSpecificWord(chatId, word).then((data) => {
+          if (data && !data.isAxiosError) {
+            return ctx.reply(data, {
+              parse_mode: "MARKDOWN",
+            });
+          }
         });
       } else if (cmd === "valid") {
-        getAllWordsByChatID(ctx, chatId, meaningful=1);
+        getAllWordsByChatID(ctx, chatId, (meaningful = 1));
       } else if (cmd === "invalid") {
-        getAllWordsByChatID(ctx, chatId, meaningful=0);
+        getAllWordsByChatID(ctx, chatId, (meaningful = 0));
       }
-
     }
   });
 };

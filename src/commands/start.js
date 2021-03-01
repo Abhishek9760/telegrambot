@@ -39,7 +39,7 @@ Hey! My name is ```Sara```. I am a bot which can do various actions to help you 
     });
   };
 
-  bot.command(["start", "help"], (ctx) => {
+  bot.command(["start", "help", "start@cutio_bot", "help@cutio_bot"], (ctx) => {
     sendStartMsg(ctx);
   });
 

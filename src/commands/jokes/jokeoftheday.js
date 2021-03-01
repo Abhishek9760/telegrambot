@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 module.exports = (bot) => {
-  bot.command("jokeoftheday", (ctx) => {
+  bot.command(["jokeoftheday", "jokeoftheday@cutio_bot"], (ctx) => {
     axios.get("https://api.jokes.one/jod").then(
       (f = (res) => {
         let data = res.data.contents.jokes[0].joke;
