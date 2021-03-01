@@ -1,7 +1,8 @@
 module.exports = (bot) => {
-    bot.command("d", ctx => {
-        if (ctx.message.from.id == "917058950" | ctx.message.from.id == "1138438767"){
-            ctx.reply("Baby dinner kiya👀");
-        }
-    });
-}
+  bot.command("d", (ctx) => {
+    console.log(ctx.message.from.id);
+    if (ctx.message.from.id == "1312784508") {
+      ctx.reply("Baby dinner kiya👀");
+    }
+  });
+};
