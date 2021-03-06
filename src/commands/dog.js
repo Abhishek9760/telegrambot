@@ -2,7 +2,7 @@ const axios = require("axios");
 const config = require("../../config");
 
 module.exports = (bot) => {
-  bot.command(["dog", "deg@cutio_bot"], (ctx) => {
+  bot.command(["dog", "dog@cutio_bot"], (ctx) => {
     let input = ctx.message.text.split(" ");
     if (input.length != 2) {
       ctx.reply("You must give a dog breed as 2nd argument.");
