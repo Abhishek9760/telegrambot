@@ -12,7 +12,7 @@ module.exports = (bot) => {
             let msg = `
 ${data.text}
 
-By - <a href='${data.img}'>${data.author}</a>
+By - ${data.author}
 `;
             ctx.reply(msg, {
               parse_mode: "HTML",
