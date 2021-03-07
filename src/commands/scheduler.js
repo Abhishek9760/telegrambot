@@ -8,7 +8,7 @@ async function scheduler(bot) {
     .then((res) => res.data.slip.advice);
 
   const res = bot.telegram.sendMessage(
-    -494732805,
+    -1001272663785,
     `Good Morning everyone😊\nToday's advice is - \n\n${msg}`
   );
 }
@@ -16,7 +16,7 @@ async function scheduler(bot) {
 function counter(bot) {
   bot.command(["count", "count@cutio_bot"], async (ctx) => {
     const data = await ctx.getChat();
-    if (data.id != -494732805) {
+    if (data.id != -1001272663785) {
       return;
     }
     let input = ctx.message.text.toLowerCase();
