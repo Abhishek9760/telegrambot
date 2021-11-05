@@ -82,19 +82,4 @@ jokeofthedayCommand(bot);
 const chuckNorrisJokeCommand = require("./src/commands/jokes/chucknorrisjoke");
 chuckNorrisJokeCommand(bot);
 
-const lunchCommand = require("./src/commands/private/lunch");
-lunchCommand(bot);
-
-const dinnerCommand = require("./src/commands/private/dinner");
-dinnerCommand(bot);
-
-const bfCommand = require("./src/commands/private/bf");
-bfCommand(bot);
-
-const gnCommand = require("./src/commands/private/gn");
-gnCommand(bot);
-
-const babyCommand = require("./src/commands/private/baby");
-babyCommand(bot);
-
 bot.startPolling();
