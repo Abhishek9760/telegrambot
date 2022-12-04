@@ -25,8 +25,8 @@ cron.schedule("0 7 * * *", () => {
 });
 
 scheduleCommand.counter(bot);
-const askCommand = require("./src/commands/ask");
-askCommand(bot);
+// const askCommand = require("./src/commands/ask");
+// askCommand(bot);
 
 const storyCommand = require("./src/commands/story");
 storyCommand(bot);
