@@ -17,5 +17,8 @@
     "telegraf": "^3.38.0",
     "telegraf-ratelimit": "^2.0.0",
     "wolfram-alpha-api": "^0.2.1"
+  },
+  "engines": {
+    "node": ">=14 <15"
   }
 }
