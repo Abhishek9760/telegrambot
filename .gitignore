@@ -1,5 +1,5 @@
 .env
 bot.code-workspace
-node_modules
+node_modules/
 LICENSE
 README.md
