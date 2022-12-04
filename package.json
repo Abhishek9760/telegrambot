@@ -14,7 +14,7 @@
     "dotenv": "^16.0.3",
     "node-cron": "^3.0.2",
     "nodemon": "^2.0.20",
-    "telegraf": "^4.11.2",
+    "telegraf": "^3.38.0",
     "telegraf-ratelimit": "^2.0.0",
     "wolfram-alpha-api": "^0.2.1"
   },
