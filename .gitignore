@@ -3,3 +3,4 @@ bot.code-workspace
 node_modules/
 LICENSE
 README.md
+package-lock.json
